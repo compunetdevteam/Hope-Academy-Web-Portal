@@ -1,8 +1,9 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using HopeAcademySMS.Models.Objects;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace HopeAcademySMS.Models
 {
@@ -33,8 +34,46 @@ namespace HopeAcademySMS.Models
         public DbSet<Student> Students { get; set; }
         public DbSet<Staff> Staffs { get; set; }
 
-        public System.Data.Entity.DbSet<HopeAcademySMS.Models.Course> Courses { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
-        public System.Data.Entity.DbSet<HopeAcademySMS.Models.Grade> Grades { get; set; }
+        public DbSet<ContinuousAssessment> ContinuousAssessments { get; set; }
+        //public DbSet<SubjectPositions> SubjectPositions { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<FeePayment> FeePayments { get; set; }
+        public DbSet<FeeType> FeeTypes { get; set; }
+
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<BookIssue> BookIssues { get; set; }
+
+        public DbSet<Guardian> Guardians { get; set; }
+
+        public DbSet<AssignedClass> AssignedClasses { get; set; }
+
+        public DbSet<AssignSubject> AssignSubjects { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<ReportSummary> ReportSummarys { get; set; }
+
+        public DbSet<SessionSubjectTotal> SessionSubjectTotals { get; set; }
+
+        public DbSet<SubjectCategory> SubjectCategories { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+
+        public DbSet<Affective> Affectives { get; set; }
+
+        public DbSet<OtherSkills> OtherSkills { get; set; }
+
+        public DbSet<Expression> Expressions { get; set; }
+
+        public DbSet<CBT.QuestionAnswer> QuestionAnswers { get; set; }
+        public DbSet<CBT.StudentQuestion> StudentQuestions { get; set; }
+
+        public System.Data.Entity.DbSet<HopeAcademySMS.Models.CBT.ExamRule> ExamRules { get; set; }
     }
 }

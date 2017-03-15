@@ -1,0 +1,306 @@
+﻿@model HopeAcademySMS.ViewModel.ReportViewModel
+@{
+    ViewBag.Title = "Print Result";
+}
+
+
+<img src="~/Content/images/logo.PNG" width="900" />
+
+<div>
+    <hr />
+    <div class="row">
+
+        <div class="col-md-4">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Student ID</td>
+                        <td>@Html.DisplayFor(model => model.Student.StudentId)</td>
+                    </tr>
+                    <tr>
+                        <td>Student Name</td>
+                        <td>@Html.DisplayFor(model => model.Student.FullName)</td>
+                    </tr>
+                    <tr>
+                        <td>Class Teacher</td>
+                        <td>Dooley</td>
+                    </tr>
+                    <tr>
+                        <td>Next Term Begins</td>
+                        <td>Dooley</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Current Class</td>
+                        <td>@ViewBag.ClassName</td>
+                    </tr>
+                    <tr>
+                        <td>Sex</td>
+                        <td>@Html.DisplayFor(model => model.Student.Gender)</td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td>@Html.DisplayFor(model => model.Student.Age)</td>
+                    </tr>
+                    <tr>
+                        <td>Term</td>
+                        <td>@ViewBag.Term</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Average</td>
+                        <td>@Html.DisplayFor(model => model.Average)</td>
+                    </tr>
+                    <tr>
+                        <td>Aggregate Position</td>
+                        <td>@Html.DisplayFor(model => model.AggregatePosition)</td>
+                    </tr>
+                    <tr>
+                        <td>No in Class</td>
+                        <td>@Html.DisplayFor(model => model.NoOfStudentPerClass)</td>
+                    </tr>
+                    <tr>
+                        <td>Session</td>
+                        <td>@ViewBag.Session</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<table class="table">
+    <tr>
+      
+        <th>
+            Subject
+        </th>
+        <th>
+            Assign1
+        </th>
+        <th>
+            Assign2
+        </th>
+        <th>
+            First Test
+        </th>
+        <th>
+            Second Test
+        </th>
+        <th>
+            Exam Score
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Grade
+        </th>
+        <th>
+            Remark
+        </th>
+        <th>
+            SP
+        </th>
+        <th>
+            Class Average
+        </th>
+        <th>
+            Teacher
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Maths)
+    {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Grading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+
+
+            @foreach (var resultItem in Model.Results.Where(c => c.SubjectName.Contains(item.SubjectCode)))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.SubjectPosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.ClassAverage)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+        </tr>
+
+    }
+    @foreach (var item in Model.English)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Grading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+
+
+            @foreach (var resultItem in Model.Results.Where(c => c.SubjectName.Contains(item.SubjectCode)))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.SubjectPosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.ClassAverage)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+        </tr>
+
+    }
+    @foreach (var item in Model.ContinuousAssessments)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+             
+            <td>
+                @Html.DisplayFor(modelItem => item.Grading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)</td>
+
+                
+            @foreach (var resultItem in Model.Results.Where(c => c.SubjectName.Contains(item.SubjectCode)))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.SubjectPosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => resultItem.ClassAverage)
+                </td>
+            }
+                
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<h2>Total Score is @Html.DisplayFor(model => model.TotalScore)</h2>
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OtherSkills.TeamWorkTeamLeading)</td>
+            <td>@Html.DisplayFor(model => model.OtherSkills.TeamWorkTeamLeading)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OtherSkills.PhysicalDexterity)</td>
+            <td>@Html.DisplayFor(model => model.OtherSkills.PhysicalDexterity)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OtherSkills.ClubAndSocieties)</td>
+            <td>@Html.DisplayFor(model => model.OtherSkills.ClubAndSocieties)</td>
+        </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.OtherSkills.ArtisticOrMusicalSkills)</td>
+        <td>@Html.DisplayFor(model => model.OtherSkills.ArtisticOrMusicalSkills)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.OtherSkills.LabAndWorkshopSkills)</td>
+        <td>@Html.DisplayFor(model => model.OtherSkills.LabAndWorkshopSkills)</td>
+    </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OtherSkills.Sports)</td>
+            <td>@Html.DisplayFor(model => model.OtherSkills.Sports)</td>
+        </tr>
+    </tbody>
+</table>
+
+
